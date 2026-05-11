@@ -1,0 +1,144 @@
+# De volta ao Reticulate {background-image="img/reticulate.jpg" background-opacity=0.5} 
+
+<!-- ![reticulate](img/reticulate.png) -->
+```{r system load}
+#| echo: false 
+#| eval: false
+library(reticulate)
+reticulate::use_virtualenv("uv_nlp_314")
+```
+
+
+
+## Instalações Python a partir do R
+
+| comando | descrição |
+| ------- | --------- |
+| py_available() | checa se python está instalado no sistema |
+| install_python()| instala python |
+| install_miniconda() |    Install Miniconda |
+| py_numpy_available() | checa se numpy está disponível |
+| py_module_available("módulo") | Check if a Python module is available on this system.|
+| py_install()| Install Python packages |
+| py_list_packages() |    List installed Python packages |
+| uv_run_tool()|    uv run tool |
+
+## Utilizando o UV a partir do R
+<!-- {visibility="hidden"}  -->
+
+```{r }
+#| eval: false
+reticulate::use_virtualenv("uv_nlp_314")
+reticulate::uv_run_tool("pip list")
+reticulate::uv_run_tool("ruff", "--help")
+# reticulate::uv_run_tool("uv pip install gliner2")
+
+system2("uv", args = "pip list", stdout = TRUE)
+```
+
+
+
+## Ex.: Pacote Spacy  
+Nativo do Python <https://spacy.io/>  
+
+mas com wrap em R <https://spacyr.quanteda.io/articles/using_spacyr.html>.  
+
+## Ex. Chamando funções métodos Python como funções R
+<!-- {visibility="hidden"} -->
+Exemplo, pacote [GliNER2](https://github.com/fastino-ai/GLiNER2) 
+E no R, [gliNERR](https://github.com/SoaresAlisson/gliNERR)
+
+Diretamente no Python
+```{python py:gliner2}
+#| eval: false
+from gliner2 import GLiNER2 
+model = "fastino/gliner2-large-v1"
+extractor = GLiNER2.from_pretrained("fastino/gliner2-large-v1")
+
+import pickle 
+# file_name = "/home/alisson/Documentos/Programação/R/meus_pacotes/gliNERR/extractor_fastino_gliner2-large-v1"
+# pickle.loads(extractor_name)
+
+dir(extractor)
+dir(extractor.extract_entities)
+
+text = "O grupo R Brasil no Telegram agora transmite vídeos"
+result = extractor.extract_entities(text, ["name"])
+print(result)
+```
+## Chamando funções métodos Python como funções R 
+Opção 2: quase "nativo"
+Transformando função python em função R
+
+```{r r.gliner}
+#| eval: false 
+library(reticulate)
+reticulate::use_virtualenv("uv_nlp_314")
+reticulate::py_config()$python
+## [1] "/home/alisson/.virtualenvs/uv_nlp_314/bin/python"
+gliner2 <- reticulate::import("gliner2", convert = FALSE)
+## py_help(gliner2)
+class(gliner2) 
+##  "python.builtin.module" "python.builtin.object"
+```
+---
+
+```{r r.gliner 2}
+#| eval: false 
+# carregando o modelo
+model <-  "fastino/gliner2-large-v1"
+# extractor <- gliner2$GLiNER2$from_pretrained(model)
+extractor_name <- "~/Documentos/Programação/R/meus_pacotes/gliNERR/extractor_fastino_gliner2-large-v1"
+extractor <- reticulate::py_load_object(extractor_name)
+class(extractor)
+## [1] "gliner2.inference.engine.GLiNER2"                
+## [2] "gliner2.model.Extractor"                         
+## [3] "transformers.modeling_utils.PreTrainedModel"     
+## [4] "torch.nn.modules.module.Module"                  
+## [5] "transformers.modeling_utils.EmbeddingAccessMixin"
+## [6] "transformers.modeling_utils.ModuleUtilsMixin"    
+## [7] "transformers.utils.hub.PushToHubMixin"           
+## [8] "transformers.integrations.peft.PeftAdapterMixin" 
+## [9] "python.builtin.object"
+```
+
+--- 
+
+```{r r.gliner 3}
+#| eval: false 
+assign("extract_entities", 
+  extractor$extract_entities,
+  envir = .GlobalEnv)
+
+class(extract_entities)
+args(extract_entities)
+
+extraia_entidades <- extractor$extract_entities
+class(extraia_entidades)
+## [1] "python.builtin.method" "python.builtin.object"
+args(extraia_entidades)
+## function (text, entity_types, threshold = 0.5, format_results = TRUE, 
+##     include_confidence = FALSE, include_spans = FALSE, max_len = NULL) 
+## NULL
+```
+---
+
+```{r }
+#| eval: false
+extraia_entidades("O grupo R Brasil no Telegram agora transmite vídeos", c("name"))
+## $entities
+## $entities$name
+## [1] "grupo R Brasil" "Telegram"
+```
+
+
+## Usar função R no Python 
+
+`py_func()` | Wrap an R function in a Python function with the same signature.
+
+. . .
+
+
+
+
+
