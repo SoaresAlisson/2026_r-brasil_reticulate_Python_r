@@ -11,7 +11,7 @@
     "href": "index.html#tipos-de-poo",
     "title": "Python versus R? Python no R!",
     "section": "Tipos de POO",
-    "text": "Tipos de POO\nTerminologia de Chambers. “Extending R”, 2016\nOOP encapsulada (POO clássica ):\n\nobjetos contém dados e métodos\nMétodos pertencem a objetos e classes\nobject.method(arg1, arg2).\nencapsulada pois o objeto encapsula dados e comportamento (métodos).\nObjetos são mutáveis"
+    "text": "Tipos de POO\nTerminologia de Chambers, “Extending R”, 2016 (apud (Wickham 2019, 287))\nOOP encapsulada (POO clássica ):\n\nobjetos contém dados e métodos\nMétodos pertencem a objetos e classes\nobject.method(arg1, arg2).\nencapsulada pois o objeto encapsula dados e comportamento (métodos).\nObjetos são mutáveis"
   },
   {
     "objectID": "index.html#sistemas-de-poo-no-r",
@@ -74,7 +74,7 @@
     "href": "index.html#estrutura-de-dados",
     "title": "Python versus R? Python no R!",
     "section": "Estrutura de dados",
-    "text": "Estrutura de dados\n\n\n\n\n\n\n\n\nR\nPython\nExamples\n\n\n\n\nSingle-element vector\nScalar\n1, 1L, TRUE, \"foo\"\n\n\nMulti-element vector\nList\nc(1.0, 2.0, 3.0), c(1L, 2L, 3L)\n\n\nList of multiple types\nTuple\nlist(1L, TRUE, \"foo\")\n\n\nNamed list\nDict\nlist(a = 1L, b = 2.0), dict(x = x_data)\n\n\nMatrix/Array\nNumPy ndarray\nmatrix(c(1,2,3,4), nrow = 2, ncol = 2)\n\n\nData Frame\nPandas DataFrame\ndata.frame(x = c(1,2,3), y = c(\"a\", \"b\", \"c\"))\n\n\nFunction\nPython function\nfunction(x) x + 1\n\n\nRaw\nPython bytearray\nas.raw(c(1:10))\n\n\nNULL, TRUE, FALSE\nNone, True, False\nNULL, TRUE, FALSE\n\n\n\nFonte: https://pkgs.rstudio.com/reticulate/articles/calling_python.html"
+    "text": "Estrutura de dados\n\n\n\n\n\n\n\n\nR\nPython\nExemplo no R\n\n\n\n\nSingle-element vector\nScalar\n1, 1L, TRUE, \"foo\"\n\n\nMulti-element vector\nList\nc(1.0, 2.0, 3.0), c(1L, 2L, 3L)\n\n\nList of multiple types\nTuple\nlist(1L, TRUE, \"foo\")\n\n\nNamed list\nDict\nlist(a = 1L, b = 2.0), dict(x = x_data)\n\n\nMatrix/Array\nNumPy ndarray\nmatrix(c(1,2,3,4), nrow = 2, ncol = 2)\n\n\nData Frame\nPandas DataFrame\ndata.frame(x = c(1,2,3), y = c(\"a\", \"b\", \"c\"))\n\n\nFunction\nPython function\nfunction(x) x + 1\n\n\nRaw\nPython bytearray\nas.raw(c(1:10))\n\n\nNULL, TRUE, FALSE\nNone, True, False\nNULL, TRUE, FALSE\n\n\n\nFonte: https://pkgs.rstudio.com/reticulate/articles/calling_python.html"
   },
   {
     "objectID": "index.html#r-e-pandas",
@@ -109,28 +109,28 @@
     "href": "index.html#obtendo-ajuda",
     "title": "Python versus R? Python no R!",
     "section": "Obtendo ajuda",
-    "text": "Obtendo ajuda\n\n#py_help(\"print\")\n\nos &lt;- import(\"os\")\npy_help(os$chdir)"
+    "text": "Obtendo ajuda\n\n#py_help(\"print\")\n\nos &lt;- import(\"os\")\nreticulate::py_help(os$chdir)"
   },
   {
     "objectID": "index.html#checando-se-módulospacotes-estão-instalados",
     "href": "index.html#checando-se-módulospacotes-estão-instalados",
     "title": "Python versus R? Python no R!",
     "section": "checando se módulos/pacotes estão instalados",
-    "text": "checando se módulos/pacotes estão instalados\n\npy_module_available(\"numpy\")\n\n[1] TRUE\n\npy_module_available(\"xyz\")\n\n[1] FALSE"
+    "text": "checando se módulos/pacotes estão instalados\n\nreticulate::py_module_available(\"numpy\")\n\n[1] TRUE\n\nreticulate::py_module_available(\"xyz\")\n\n[1] FALSE"
   },
   {
     "objectID": "index.html#sourcing",
     "href": "index.html#sourcing",
     "title": "Python versus R? Python no R!",
     "section": "sourcing",
-    "text": "sourcing\nSourcing Scripts. Dado o script add.py:\n# conteúdo do arquivo\ndef add(x, y):\n  print(\"the sum of\", x, \"and\", y, \"is\", x+y)\n\nChamando-o de dentro do R\n\nsource_python('add.py')\nadd(5, 10)\n\nthe sum of 5.0 and 10.0 is 15.0"
+    "text": "sourcing\nSourcing Scripts. Dado o script add.py:\n# conteúdo do arquivo\ndef add(x, y):\n  print(\"the sum of\", x, \"and\", y, \"is\", x+y)\n\nChamando-o de dentro do R\n\nreticulate::source_python('add.py')\nadd(5, 10)\n\nthe sum of 5.0 and 10.0 is 15.0"
   },
   {
     "objectID": "index.html#executando-código",
     "href": "index.html#executando-código",
     "title": "Python versus R? Python no R!",
     "section": "Executando código",
-    "text": "Executando código\nA partir de arquivo\n\nlibrary(reticulate)\n\npy_run_file(\"meu_script.py\")\n\n\nRodando Python diretamente do R\n\npy_run_string(\"x = 10 + 10\")\npy_run_string(\"print(x)\")\n\n20\n\n\n\n\n\npy_run_string('import os')\npy_run_string('arquivos = os.listdir(\".\")')\npy_run_string('print(arquivos)')\n\n['quarto.qmd', '.quarto', 'comparacao_py_r.qmd', 'reticulate.qmd', 'index.rmarkdown', '_environment', 'docs', 'flight_data.csv', 'style.css', 'references.bib', 'index.qmd', 'R_&_python.qmd', 'README.md', 'reticulate2.qmd', '_quarto.yml', 'lei_softwarelivre.qmd', '_brand.yml', 'img', 'add.py', 'standby.qmd']"
+    "text": "Executando código\nA partir de arquivo\n\nlibrary(reticulate)\n\npy_run_file(\"meu_script.py\")\n\n\nRodando Python diretamente do R\n\nreticulate::py_run_string(\"x = 10 + 10\")\npy_run_string(\"print(x)\")\n\n20\n\n\n\n\n\npy_run_string('import os')\npy_run_string('arquivos = os.listdir(\".\")')\npy_run_string('print(arquivos)')\n\n['quarto.qmd', '.quarto', '.git', 'comparacao_py_r.qmd', 'reticulate.qmd', 'index.rmarkdown', '_environment', 'docs', 'flight_data.csv', 'style.css', 'references.bib', 'index.qmd', 'R_&_python.qmd', '_extensions', 'README.md', 'reticulate2.qmd', '_quarto.yml', '.gitignore', 'lei_softwarelivre.qmd', '_brand.yml', 'img', 'add.py', 'standby.qmd']"
   },
   {
     "objectID": "index.html#objetos",
@@ -172,7 +172,7 @@
     "href": "index.html#sintaxe-básica",
     "title": "Python versus R? Python no R!",
     "section": "Sintaxe básica",
-    "text": "Sintaxe básica\n---\ntitle: O meu título\nformat: pdf\n---\n\n# Exemplos de código em diferentes lingauagens\nVeja este meu código **Python**\n```{python}\nlist.files(pattern = \"qmd$\")\n```\n\nVeja este meu código em _R_\n```{r}\nfrom os import listdir\nos.listdir()\n```\n\nVeja este meu código em Julia\n```{julia}\nreaddir()\n```"
+    "text": "Sintaxe básica\n---\ntitle: O meu título\nformat: pdf\n---\n\n# Exemplos de código em diferentes lingauagens\nVeja este meu código **Python**\n```{r}\nlist.files(pattern = \"qmd$\")\n```\n\nVeja este meu código em _R_\n```{python}\nfrom os import listdir\nos.listdir()\n```\n\nVeja este meu código em Julia\n```{julia}\nreaddir()\n```"
   },
   {
     "objectID": "index.html#instalação",
@@ -221,7 +221,7 @@
     "href": "index.html#quarto-adicionando-plugins-e-adicionais",
     "title": "Python versus R? Python no R!",
     "section": "Quarto: adicionando plugins e adicionais",
-    "text": "Quarto: adicionando plugins e adicionais\nhttps://quarto.org/docs/extensions/managing.html\nNo diretório do projeto atual\n\nquarto add andrewheiss/language-name"
+    "text": "Quarto: adicionando plugins e adicionais\nhttps://quarto.org/docs/extensions/managing.html\nAdicionando plugin quarto no diretório do projeto atual\n\n# plugin que adiciona o nome da linguagem em cada chunk de código\nquarto add andrewheiss/language-name"
   },
   {
     "objectID": "index.html#usando-com-o-quarto-especificando-o-ambiente-venv-python",
@@ -424,14 +424,14 @@
     "href": "index.html#sistemas-de-poo-no-r---pacotes-adicionais",
     "title": "Python versus R? Python no R!",
     "section": "Sistemas de POO no R - Pacotes Adicionais:",
-    "text": "Sistemas de POO no R - Pacotes Adicionais:\n\nOOP is defunct and no longer available.\nR.oo [Bengtsson, 2003]\n\nproto [Grothendieck et al., 2016]. had a brief moment of popularity as the underlying system in early versions of the ggplot2 package but is no longer really used.\nggproto, “All ggplot2 objects are built using the ggproto system for object-oriented programming, and is unusual in that it is used only by ggplot2… Attempts to switch ggplot2 to other systems such as R6 (Chang 2020) proved difficult, and creating an object-oriented system specific to the needs of ggplot2 turned out to be the least bad solution.” link\nR5 e mutatr: “R5 and mutatr were both experimental systems that never made it into real-world use before being abandoned. It’s almost impossible to use these, even if you wanted to.” Fonte: Datacamp.\nR6 [Winston Chang, 2017]. “It’s primarily been developed by Posit (formerly RStudio) and is used within the Shiny package.”\n\nS7, S7 website 2022, (previamente chamado de “R7”), “designed to be the successor to S3 and S4”, “built on top of S3, S7 objects are S3 objects.”link"
+    "text": "Sistemas de POO no R - Pacotes Adicionais:\n\nOOP is defunct and no longer available.\nR.oo [Bengtsson, 2003]\n\nproto [Grothendieck et al., 2016]. “had a brief moment of popularity as the underlying system in early versions of the ggplot2 package but is no longer really used.”\nggproto, “All ggplot2 objects are built using the ggproto system for object-oriented programming, and is unusual in that it is used only by ggplot2… Attempts to switch ggplot2 to other systems such as R6 (Chang 2020) proved difficult, and creating an object-oriented system specific to the needs of ggplot2 turned out to be the least bad solution.” link\nR5 e mutatr: “R5 and mutatr were both experimental systems that never made it into real-world use before being abandoned. It’s almost impossible to use these, even if you wanted to.” Fonte: Datacamp.\nR6 [Winston Chang, 2017]. “It’s primarily been developed by Posit (formerly RStudio) and is used within the Shiny package.”\n\nS7, S7 website 2022, (previamente chamado de “R7”), “designed to be the successor to S3 and S4”, “built on top of S3, S7 objects are S3 objects.”link"
   },
   {
     "objectID": "index.html#r-é-vetorizado-por-padrão",
     "href": "index.html#r-é-vetorizado-por-padrão",
     "title": "Python versus R? Python no R!",
     "section": "R é vetorizado por padrão",
-    "text": "R é vetorizado por padrão\n\n\n\nnumeros = [1, 2, 3, 4, 5]\nnumeros * 2\n\n[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]\n\nnovos_num = list(map(lambda x: x * 2, numeros))\nprint(novos_num)\n\n[2, 4, 6, 8, 10]\n\n\n\n# Utilizando numpy\nimport numpy as np\narr = np.array([1, 2, 3, 4, 5])\nnovos_num = arr * 2\nprint(novos_num)\n\n[ 2  4  6  8 10]\n\n\n\nimport pandas as pd\ns = pd.Series([1, 2, 3, 4, 5])\nnovos_num = s * 2\nprint(novos_num)\n\n0     2\n1     4\n2     6\n3     8\n4    10\ndtype: int64\n\n\n\n\nnumeros &lt;- 1:5\nnumeros * 2\n\n[1]  2  4  6  8 10"
+    "text": "R é vetorizado por padrão\n\n\n\nnumeros = [1, 2, 3, 4, 5]\nnumeros * 2\n\n[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]\n\nnovos_num = list(map(lambda x: x * 2, numeros))\nprint(novos_num)\n\n[2, 4, 6, 8, 10]\n\n\n\n# Utilizando numpy\nimport numpy as np\narr = np.array([1, 2, 3, 4, 5])\nnovos_num = arr * 2\nprint(novos_num)\n\n[ 2  4  6  8 10]\n\n\n\n# Utilizando pandas \nimport pandas as pd\ns = pd.Series([1, 2, 3, 4, 5])\nnovos_num = s * 2\nprint(novos_num)\n\n0     2\n1     4\n2     6\n3     8\n4    10\ndtype: int64\n\n\n\n\nnumeros &lt;- 1:5\nnumeros * 2\n\n[1]  2  4  6  8 10"
   },
   {
     "objectID": "reticulate2.html#instalações-python-a-partir-do-r",

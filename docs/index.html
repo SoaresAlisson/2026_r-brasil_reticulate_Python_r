@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="author" content="Alisson Soares">
-  <meta name="dcterms.date" content="2026-04-25">
+  <meta name="dcterms.date" content="2026-05-11">
   <title>Python versus R? Python no R!</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -219,7 +219,7 @@
 
 <section id="title-slide" data-background-image="img/reticulated.gif" data-background-opacity="0.25" data-background-size="cover" class="quarto-title-block center">
   <h1 class="title">Python <em>versus</em> R? Python no R!</h1>
-  <p class="subtitle">Utilizando pacotes Python no R com o Reticulate</p>
+  <p class="subtitle">Utilizando Python no R com o pacotes Reticulate</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -229,7 +229,7 @@ Alisson Soares
 </div>
 </div>
 
-  <p class="date">2026-04-25</p>
+  <p class="date">2026-05-11</p>
 </section>
 <section class="slide level2">
 
@@ -292,12 +292,12 @@ Alisson Soares
 <li class="fragment">Muitas coisas com poucas operações</li>
 <li class="fragment">Como desenvolvimento de APP / website</li>
 </ul>
-<p>Fonte: Vídeo Winston Chang <a href="">S3 and S4 Object in R</a></p>
+<p>Fonte: Vídeo Winston Chang <a href="https://youtu.be/YGlse2aW5Ao?si=Jjphgv9iOO-OdIFZ&amp;t=62">S3 and S4 Object in R</a></p>
 </div>
 </section>
 <section id="tipos-de-poo" class="slide level2">
 <h2>Tipos de POO</h2>
-<p>Terminologia de Chambers. “Extending R”, 2016</p>
+<p>Terminologia de Chambers, “Extending R”, 2016 (<em>apud</em> <span class="citation" data-cites="wickham:advancedR_2">(<a href="#/referencias" role="doc-biblioref" onclick="">Wickham 2019, 287</a>)</span>)</p>
 <h3 id="oop-encapsulada-poo-clássica"><strong>OOP encapsulada</strong> (POO clássica ):</h3>
 <ul>
 <li class="fragment">objetos contém dados e métodos</li>
@@ -318,8 +318,7 @@ Alisson Soares
 <li class="fragment">Chamada de método padrão <code>generic(object, arg2, arg3)</code></li>
 <li class="fragment">funcional pois, vista de fora, parece chamada normal de função e internamente, seus componentes também são funções.</li>
 </ul>
-<p>Apud <span class="citation" data-cites="wickham:advancedR_2">(<a href="#/referencias" role="doc-biblioref" onclick="">Wickham 2019, 287</a>)</span><br>
-<!-- The R6 Class System - Brussels 2017. --></p>
+<!-- The R6 Class System - Brussels 2017. -->
 </section>
 <section class="slide level2">
 
@@ -400,12 +399,12 @@ Alisson Soares
 <li class="fragment"><strong>OOP</strong> is defunct and no longer available.</li>
 <li class="fragment"><strong>R.oo</strong> [Bengtsson, 2003]<br>
 </li>
-<li class="fragment"><strong>proto</strong> [Grothendieck et al., 2016]. had a brief moment of popularity as the underlying system in early versions of the ggplot2 package but is no longer really used.</li>
+<li class="fragment"><strong>proto</strong> [Grothendieck et al., 2016]. “had a brief moment of popularity as the underlying system in early versions of the ggplot2 package but is no longer really used.”</li>
 <li class="fragment"><strong>ggproto</strong>, “All ggplot2 objects are built using the ggproto system for object-oriented programming, and is unusual in that it is used only by ggplot2… Attempts to switch ggplot2 to other systems such as R6 (Chang 2020) proved difficult, and creating an object-oriented system specific to the needs of ggplot2 turned out to be the least bad solution.” <a href="https://ggplot2-book.org/internals.html">link</a></li>
 <li class="fragment"><strong>R5</strong> e <strong>mutatr</strong>: “R5 and mutatr were both experimental systems that never made it into real-world use before being abandoned. It’s almost impossible to use these, even if you wanted to.” Fonte: Datacamp.</li>
 <li class="fragment"><a href="https://r6.r-lib.org/articles/Introduction.html">R6</a> [Winston Chang, 2017]. “It’s primarily been developed by Posit (formerly RStudio) and is used within the Shiny package.”<br>
 </li>
-<li class="fragment"><a href="https://cran.r-project.org/web/packages/S7/index.html">S7</a>, <a href="https://rconsortium.github.io/S7/articles/S7.html">S7 website</a> 2022, (previamente chamado de “R7”), “designed to be the successor to S3 and S4”, “built on top of S3, S7 objects are S3 objects.”<a href="https://www.jumpingrivers.com/blog/r7-oop-object-oriented-programming-r/">link</a></li>
+<li class="fragment"><a href="https://cran.r-project.org/web/packages/S7/index.html">S7</a>, <a href="https://rconsortium.github.io/S7/articles/S7.html">S7 website</a> 2022, (<a href="https://github.com/RConsortium/S7/issues/262">previamente chamado de “R7”</a>), “designed to be the successor to S3 and S4”, “built on top of S3, S7 objects are S3 objects.”<a href="https://www.jumpingrivers.com/blog/r7-oop-object-oriented-programming-r/">link</a></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -513,10 +512,11 @@ Carregando o pacote/biblioteca anteriormente</p>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-2"><a></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb19-3"><a></a>novos_num <span class="op">=</span> s <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb19-4"><a></a><span class="bu">print</span>(novos_num)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Utilizando pandas </span></span>
+<span id="cb19-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-3"><a></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb19-4"><a></a>novos_num <span class="op">=</span> s <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb19-5"><a></a><span class="bu">print</span>(novos_num)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0     2
 1     4
@@ -584,7 +584,7 @@ dtype: int64</code></pre>
 <tr class="header">
 <th>R</th>
 <th>Python</th>
-<th>Examples</th>
+<th>Exemplo no R</th>
 </tr>
 </thead>
 <tbody>
@@ -815,7 +815,8 @@ Name: col1, dtype: str</code></pre>
 <section>
 <section id="o-pacote-reticulate" class="title-slide slide level1 center" data-background-image="img/reticulate.jpg" data-background-opacity="0.5">
 <h1>O pacote Reticulate</h1>
-<p><img data-src="img/reticulate.png" alt="reticulate"> <a href="https://rstudio.github.io/reticulate/index.html" class="uri">https://rstudio.github.io/reticulate/index.html</a></p>
+<p><img data-src="img/reticulate.png" alt="reticulate"><br>
+<a href="https://rstudio.github.io/reticulate/index.html" class="uri">https://rstudio.github.io/reticulate/index.html</a></p>
 </section>
 <section id="ambientes-virtuais" class="slide level2">
 <h2>ambientes virtuais</h2>
@@ -834,12 +835,12 @@ Name: col1, dtype: str</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">library</span>(reticulate)</span>
 <span id="cb50-2"><a></a><span class="co"># utilizando meu env UV que está na pasta virtualenv</span></span>
-<span id="cb50-3"><a></a><span class="fu">use_virtualenv</span>(<span class="st">"uv_nlp_314"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb50-3"><a></a>reticulate<span class="sc">::</span><span class="fu">use_virtualenv</span>(<span class="st">"uv_nlp_314"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="co"># informações sobre a versão Python utilizada </span></span>
-<span id="cb51-2"><a></a><span class="fu">py_config</span>()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb51-2"><a></a>reticulate<span class="sc">::</span><span class="fu">py_config</span>()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>python:         /home/alisson/.virtualenvs/uv_nlp_314/bin/python
 libpython:      /home/alisson/.local/share/uv/python/cpython-3.14.3-linux-x86_64-gnu/lib/libpython3.14.so
@@ -879,17 +880,17 @@ NOTE: Python version was forced by use_python() function</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="co">#py_help("print")</span></span>
 <span id="cb59-2"><a></a></span>
 <span id="cb59-3"><a></a>os <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"os"</span>)</span>
-<span id="cb59-4"><a></a><span class="fu">py_help</span>(os<span class="sc">$</span>chdir)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb59-4"><a></a>reticulate<span class="sc">::</span><span class="fu">py_help</span>(os<span class="sc">$</span>chdir)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="checando-se-módulospacotes-estão-instalados" class="slide level2">
 <h2>checando se módulos/pacotes estão instalados</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">py_module_available</span>(<span class="st">"numpy"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>reticulate<span class="sc">::</span><span class="fu">py_module_available</span>(<span class="st">"numpy"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a><span class="fu">py_module_available</span>(<span class="st">"xyz"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>reticulate<span class="sc">::</span><span class="fu">py_module_available</span>(<span class="st">"xyz"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -904,7 +905,7 @@ NOTE: Python version was forced by use_python() function</code></pre>
 <div class="fragment">
 <p>Chamando-o de dentro do R</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">source_python</span>(<span class="st">'add.py'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>reticulate<span class="sc">::</span><span class="fu">source_python</span>(<span class="st">'add.py'</span>)</span>
 <span id="cb65-2"><a></a><span class="fu">add</span>(<span class="dv">5</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>the sum of 5.0 and 10.0 is 15.0</code></pre>
@@ -923,7 +924,7 @@ NOTE: Python version was forced by use_python() function</code></pre>
 <div class="fragment">
 <p>Rodando Python diretamente do R</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="fu">py_run_string</span>(<span class="st">"x = 10 + 10"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>reticulate<span class="sc">::</span><span class="fu">py_run_string</span>(<span class="st">"x = 10 + 10"</span>)</span>
 <span id="cb68-2"><a></a><span class="fu">py_run_string</span>(<span class="st">"print(x)"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>20</code></pre>
@@ -936,7 +937,7 @@ NOTE: Python version was forced by use_python() function</code></pre>
 <span id="cb70-2"><a></a><span class="fu">py_run_string</span>(<span class="st">'arquivos = os.listdir(".")'</span>)</span>
 <span id="cb70-3"><a></a><span class="fu">py_run_string</span>(<span class="st">'print(arquivos)'</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['quarto.qmd', '.quarto', 'comparacao_py_r.qmd', 'reticulate.qmd', 'index.rmarkdown', '_environment', 'docs', 'flight_data.csv', 'style.css', 'references.bib', 'index.qmd', 'R_&amp;_python.qmd', 'README.md', 'reticulate2.qmd', '_quarto.yml', 'lei_softwarelivre.qmd', '_brand.yml', 'img', 'add.py', 'standby.qmd']</code></pre>
+<pre><code>['quarto.qmd', '.quarto', '.git', 'comparacao_py_r.qmd', 'reticulate.qmd', 'index.rmarkdown', '_environment', 'docs', 'flight_data.csv', 'style.css', 'references.bib', 'index.qmd', 'R_&amp;_python.qmd', '_extensions', 'README.md', 'reticulate2.qmd', '_quarto.yml', '.gitignore', 'lei_softwarelivre.qmd', '_brand.yml', 'img', 'add.py', 'standby.qmd']</code></pre>
 </div>
 </div>
 </div>
@@ -953,7 +954,7 @@ NOTE: Python version was forced by use_python() function</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a></a><span class="im">import</span> os</span>
 <span id="cb72-2"><a></a>os.listdir(<span class="st">"."</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['quarto.qmd', '.quarto', 'comparacao_py_r.qmd', 'reticulate.qmd', 'index.rmarkdown', '_environment', 'docs', 'flight_data.csv', 'style.css', 'references.bib', 'index.qmd', 'R_&amp;_python.qmd', 'README.md', 'reticulate2.qmd', '_quarto.yml', 'lei_softwarelivre.qmd', '_brand.yml', 'img', 'add.py', 'standby.qmd']</code></pre>
+<pre><code>['quarto.qmd', '.quarto', '.git', 'comparacao_py_r.qmd', 'reticulate.qmd', 'index.rmarkdown', '_environment', 'docs', 'flight_data.csv', 'style.css', 'references.bib', 'index.qmd', 'R_&amp;_python.qmd', '_extensions', 'README.md', 'reticulate2.qmd', '_quarto.yml', '.gitignore', 'lei_softwarelivre.qmd', '_brand.yml', 'img', 'add.py', 'standby.qmd']</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -961,13 +962,14 @@ NOTE: Python version was forced by use_python() function</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>os <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"os"</span>)</span>
 <span id="cb74-2"><a></a>os<span class="sc">$</span><span class="fu">listdir</span>(<span class="st">"."</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "quarto.qmd"            ".quarto"               "comparacao_py_r.qmd"  
- [4] "reticulate.qmd"        "index.rmarkdown"       "_environment"         
- [7] "docs"                  "flight_data.csv"       "style.css"            
-[10] "references.bib"        "index.qmd"             "R_&amp;_python.qmd"       
-[13] "README.md"             "reticulate2.qmd"       "_quarto.yml"          
-[16] "lei_softwarelivre.qmd" "_brand.yml"            "img"                  
-[19] "add.py"                "standby.qmd"          </code></pre>
+<pre><code> [1] "quarto.qmd"            ".quarto"               ".git"                 
+ [4] "comparacao_py_r.qmd"   "reticulate.qmd"        "index.rmarkdown"      
+ [7] "_environment"          "docs"                  "flight_data.csv"      
+[10] "style.css"             "references.bib"        "index.qmd"            
+[13] "R_&amp;_python.qmd"        "_extensions"           "README.md"            
+[16] "reticulate2.qmd"       "_quarto.yml"           ".gitignore"           
+[19] "lei_softwarelivre.qmd" "_brand.yml"            "img"                  
+[22] "add.py"                "standby.qmd"          </code></pre>
 </div>
 </div>
 </div></div>
@@ -1298,14 +1300,14 @@ memory usage: 48.8 MB</code></pre>
 <span id="cb112-5"><a></a></span>
 <span id="cb112-6"><a></a><span class="fu"># Exemplos de código em diferentes lingauagens</span></span>
 <span id="cb112-7"><a></a>Veja este meu código **Python**</span>
-<span id="cb112-8"><a></a><span class="in">```{python}</span></span>
-<span id="cb112-9"><a></a><span class="bu">list</span>.files(pattern <span class="op">=</span> <span class="st">"qmd$"</span>)</span>
+<span id="cb112-8"><a></a><span class="in">```{r}</span></span>
+<span id="cb112-9"><a></a><span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">"qmd$"</span>)</span>
 <span id="cb112-10"><a></a><span class="in">```</span></span>
 <span id="cb112-11"><a></a></span>
 <span id="cb112-12"><a></a>Veja este meu código em _R_</span>
-<span id="cb112-13"><a></a><span class="in">```{r}</span></span>
-<span id="cb112-14"><a></a>from os import listdir</span>
-<span id="cb112-15"><a></a><span class="fu">os.listdir</span>()</span>
+<span id="cb112-13"><a></a><span class="in">```{python}</span></span>
+<span id="cb112-14"><a></a><span class="im">from</span> os <span class="im">import</span> listdir</span>
+<span id="cb112-15"><a></a>os.listdir()</span>
 <span id="cb112-16"><a></a><span class="in">```</span></span>
 <span id="cb112-17"><a></a></span>
 <span id="cb112-18"><a></a>Veja este meu código em Julia</span>
@@ -1412,9 +1414,10 @@ memory usage: 48.8 MB</code></pre>
 <section id="quarto-adicionando-plugins-e-adicionais" class="slide level2">
 <h2>Quarto: adicionando plugins e adicionais</h2>
 <p>https://quarto.org/docs/extensions/managing.html</p>
-<p>No diretório do projeto atual</p>
+<p>Adicionando plugin quarto no diretório do projeto atual</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb119-1"><a></a><span class="ex">quarto</span> add andrewheiss/language-name</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb119-1"><a></a><span class="co"># plugin que adiciona o nome da linguagem em cada chunk de código</span></span>
+<span id="cb119-2"><a></a><span class="ex">quarto</span> add andrewheiss/language-name</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1622,7 +1625,7 @@ Wickham, Hadley. 2019. <em><span>Advanced R</span></em>. Second. Chapman; hall/C
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="img/RBrasil_logo.svg" class="slide-logo"></p>
+<p><img src="img/rbrasil.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>R Brasil - “Utilizando Python no R com Reticulate” - Alisson Soares</p>
 </div>

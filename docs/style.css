@@ -3,16 +3,16 @@
 h1.title {
 /* div.date {  */
   /* background-image: url(www/qrcode.png), url(www/qrcode.png); */
-  background-image: url(img/RBrasil_logo.svg);
+  background-image: url(img/rbrasil.jpg);
   background-repeat: no-repeat;
   /* background-position: right; */
   /* background-position: left center; */
-  background-position: center;
+  background-position: top center;
   /* padding-left: 90px; */
-  padding-top: 250px;
+  padding-top: 150px;
   /* padding-bottom: 300px; */
   /* background-position: bottom; */
-  background-size: 300px;
+  background-size: 150px;
 }
 
 /* não funciona */

@@ -1,3 +1,3 @@
 
 Veja a apresentação aqui:
-<https://soaresalisson.github.io/flisol_2026/>
+<https://soaresalisson.github.io/2026_r-brasil_reticulate_Python_r/>
