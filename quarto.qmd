@@ -13,12 +13,12 @@ format: pdf
 
 # Exemplos de código em diferentes lingauagens
 Veja este meu código **Python**
-```{{python}}
+```{{r}}
 list.files(pattern = "qmd$")
 ```
 
 Veja este meu código em _R_
-```{{r}}
+```{{python}}
 from os import listdir
 os.listdir()
 ```
@@ -135,9 +135,10 @@ quarto render class_notes.ipynb
 ## Quarto: adicionando plugins e adicionais
 https://quarto.org/docs/extensions/managing.html 
 
-No diretório do projeto atual
+Adicionando plugin quarto no diretório do projeto atual
 ```{bash add plugin}
 #| eval: false
+# plugin que adiciona o nome da linguagem em cada chunk de código
 quarto add andrewheiss/language-name
 ```
 

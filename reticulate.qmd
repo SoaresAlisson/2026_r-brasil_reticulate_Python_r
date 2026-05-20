@@ -1,6 +1,6 @@
 # O pacote Reticulate {background-image="img/reticulate.jpg" background-opacity=0.5} 
 
-![reticulate](img/reticulate.png)
+![reticulate](img/reticulate.png)  
  <https://rstudio.github.io/reticulate/index.html>
 
 
@@ -21,14 +21,14 @@ https://rstudio.github.io/reticulate/articles/versions.html
 ```{r load libs reticulate}
 library(reticulate)
 # utilizando meu env UV que está na pasta virtualenv
-use_virtualenv("uv_nlp_314")
+reticulate::use_virtualenv("uv_nlp_314")
 ```
 
 . . .
 
 ```{r testando python}
 # informações sobre a versão Python utilizada 
-py_config()
+reticulate::py_config()
 
 # Qual Python está sendo utilizado:
 reticulate::py_config()$python
@@ -47,12 +47,12 @@ reticulate::py_eval("3 ** 2")
 #py_help("print")
 
 os <- import("os")
-py_help(os$chdir)
+reticulate::py_help(os$chdir)
 ```
 ## checando se módulos/pacotes estão instalados
 ```{r py_module_available}
-py_module_available("numpy")
-py_module_available("xyz")
+reticulate::py_module_available("numpy")
+reticulate::py_module_available("xyz")
 
 ```
 
@@ -70,7 +70,7 @@ def add(x, y):
 Chamando-o de dentro do R
 ```{r r:add.py}
 #| echo: true
-source_python('add.py')
+reticulate::source_python('add.py')
 add(5, 10)
 ```
 
@@ -86,7 +86,7 @@ py_run_file("meu_script.py")
 
 Rodando Python diretamente do R
 ```{r run_string}
-py_run_string("x = 10 + 10")
+reticulate::py_run_string("x = 10 + 10")
 py_run_string("print(x)")
 ```
 . . .

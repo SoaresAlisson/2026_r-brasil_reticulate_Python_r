@@ -1,8 +1,8 @@
 title: Python _versus_ R? Python no R!
-subtitle: Utilizando pacotes Python no R com o Reticulate
+subtitle: Utilizando Python no R com o pacotes Reticulate
 abstract: Python, R são duas das principais linguagens de programação utilizadas em ciência e análise de dados. Há vantagens e desvantagens em cada uma, a depender da tarefa. O R é uma linguagem funcional, feita por estatísticos, com pipe e que possui código mais conciso. Python é orientada a objetos, multi propósito, que possui a maioria de ferramentas avançadas de Processamento de Linguagem Natural, Machine Learning e Inteligência Artificial. Há quem prefira utilizar ambas linguagens em diferentes partes do processo e há diferentes modos de integrar ambas. Vamos focar aqui no uso de Python dentro do R com o pacote Reticulate do R. Vamos aprender como traduzir objetos de uma linguagem a outra, como usar funções Python quase como se fossem funções nativas do R. O formato Quarto, uma variante de markdown também de código aberto voltada para código, permite transicionar facilmente entre as duas.
 author: Alisson Soares
-date: 2026-04-25
+date: 2026-05-11
 logo:
   alt: R-Brasil
 lang: pt

@@ -7,7 +7,8 @@ color:
   primary: black
 
 logo:
-  medium: img/RBrasil_logo.svg
+  # medium: img/RBrasil_logo.svg
+  medium: img/rbrasil.jpg
 
 typography:
   fonts:

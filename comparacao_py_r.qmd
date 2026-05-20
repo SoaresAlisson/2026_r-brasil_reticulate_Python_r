@@ -47,13 +47,13 @@ Há diversos outros rankings, com classificações bem diferentes
 - Muitas coisas com poucas operações 
 - Como desenvolvimento de APP / website
 
-Fonte: Vídeo Winston Chang [S3 and S4 Object in R]()
+Fonte: Vídeo Winston Chang [S3 and S4 Object in R](https://youtu.be/YGlse2aW5Ao?si=Jjphgv9iOO-OdIFZ&t=62)
 
 
 ---
 
 ## Tipos de POO  
-Terminologia de Chambers. "Extending R", 2016
+Terminologia de Chambers, "Extending R", 2016 (_apud_ [@wickham:advancedR_2, p.287])
 
 ### **OOP encapsulada** (POO clássica ):
 
@@ -74,7 +74,6 @@ Terminologia de Chambers. "Extending R", 2016
   - Chamada de método padrão `generic(object, arg2, arg3)`
   - funcional pois, vista de fora, parece chamada normal de função e internamente, seus componentes também são funções.
 
-Apud [@wickham:advancedR_2, p.287]  
 <!-- The R6 Class System - Brussels 2017. -->
 
 --- 
@@ -123,11 +122,11 @@ funções e métodos podem ou não mudar x
 
 - **OOP** is defunct and no longer available.
 - **R.oo** [Bengtsson, 2003]  
-- **proto** [Grothendieck et al., 2016]. had a brief moment of popularity as the underlying system in early versions of the ggplot2 package but is no longer really used.
+- **proto** [Grothendieck et al., 2016]. "had a brief moment of popularity as the underlying system in early versions of the ggplot2 package but is no longer really used."
 - **ggproto**, "All ggplot2 objects are built using the ggproto system for object-oriented programming, and is unusual in that it is used only by ggplot2... Attempts to switch ggplot2 to other systems such as R6 (Chang 2020) proved difficult, and creating an object-oriented system specific to the needs of ggplot2 turned out to be the least bad solution." [link](https://ggplot2-book.org/internals.html)
 - **R5** e **mutatr**:  "R5 and mutatr were both experimental systems that never made it into real-world use before being abandoned. It’s almost impossible to use these, even if you wanted to." Fonte: Datacamp.
 - [R6](https://r6.r-lib.org/articles/Introduction.html) [Winston Chang, 2017]. "It’s primarily been developed by Posit (formerly RStudio) and is used within the Shiny package."  
-- [S7](https://cran.r-project.org/web/packages/S7/index.html), [S7 website](https://rconsortium.github.io/S7/articles/S7.html) 2022, (previamente chamado de "R7"), "designed to be the successor to S3 and S4", "built on top of S3, S7 objects are S3 objects."[link](https://www.jumpingrivers.com/blog/r7-oop-object-oriented-programming-r/)
+- [S7](https://cran.r-project.org/web/packages/S7/index.html), [S7 website](https://rconsortium.github.io/S7/articles/S7.html) 2022, ([previamente chamado de "R7"](https://github.com/RConsortium/S7/issues/262)), "designed to be the successor to S3 and S4", "built on top of S3, S7 objects are S3 objects."[link](https://www.jumpingrivers.com/blog/r7-oop-object-oriented-programming-r/)
 
 --- 
 
@@ -274,7 +273,7 @@ print(y)
 ## Estrutura de dados
 
 
-| R                      | Python            | Examples                                         |
+| R                      | Python            | Exemplo no R                                   |
 |------------------------|-------------------|--------------------------------------------------|
 | Single-element vector  | Scalar            | `1`, `1L`, `TRUE`, `"foo"`                       |
 | Multi-element vector   | List              | `c(1.0, 2.0, 3.0)`, `c(1L, 2L, 3L)`              |
