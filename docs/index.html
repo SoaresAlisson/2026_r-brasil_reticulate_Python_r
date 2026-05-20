@@ -11,7 +11,7 @@
 
   <meta name="author" content="Alisson Soares">
   <meta name="dcterms.date" content="2026-05-11">
-  <title>Python versus R? Python no R!</title>
+  <title>Utilizando Python no R com o pacote Reticulate</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -216,8 +216,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="img/reticulated.gif" data-background-opacity="0.25" data-background-size="cover" class="quarto-title-block center">
-  <h1 class="title">Python <em>versus</em> R? Python no R!</h1>
-  <p class="subtitle">Utilizando Python no R com o pacotes Reticulate</p>
+  <h1 class="title">Utilizando Python no R com o pacote Reticulate</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1289,20 +1288,20 @@ memory usage: 48.8+ MB</code></pre>
 <h1>Quarto</h1>
 <p><img data-src="img/quarto.png" alt="quarto website"> https://quarto.org/</p>
 </section>
-<section id="sintaxe-básica" class="slide level2">
-<h2>Sintaxe básica</h2>
+<section id="sintaxe-básica-do-quarto-.qmd" class="slide level2">
+<h2>Sintaxe básica do quarto .qmd</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb112"><pre class="sourceCode numberSource markdown verbatim number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb112-1"><a></a><span class="co">---</span></span>
 <span id="cb112-2"><a></a><span class="an">title:</span><span class="co"> O meu título</span></span>
 <span id="cb112-3"><a></a><span class="an">format:</span><span class="co"> pdf</span></span>
 <span id="cb112-4"><a></a><span class="co">---</span></span>
 <span id="cb112-5"><a></a></span>
 <span id="cb112-6"><a></a><span class="fu"># Exemplos de código em diferentes lingauagens</span></span>
-<span id="cb112-7"><a></a>Veja este meu código **Python**</span>
+<span id="cb112-7"><a></a>Veja este meu código **R**</span>
 <span id="cb112-8"><a></a><span class="in">```{r}</span></span>
 <span id="cb112-9"><a></a><span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">"qmd$"</span>)</span>
 <span id="cb112-10"><a></a><span class="in">```</span></span>
 <span id="cb112-11"><a></a></span>
-<span id="cb112-12"><a></a>Veja este meu código em _R_</span>
+<span id="cb112-12"><a></a>Veja este meu código em _Python_</span>
 <span id="cb112-13"><a></a><span class="in">```{python}</span></span>
 <span id="cb112-14"><a></a><span class="im">from</span> os <span class="im">import</span> listdir</span>
 <span id="cb112-15"><a></a>os.listdir()</span>
@@ -1505,7 +1504,7 @@ memory usage: 48.8+ MB</code></pre>
 <h2>Ex. Chamando funções métodos Python como funções R</h2>
 <!-- {visibility="hidden"} -->
 <p>Exemplo, pacote <a href="https://github.com/fastino-ai/GLiNER2">GliNER2</a> E no R, <a href="https://github.com/SoaresAlisson/gliNERR">gliNERR</a></p>
-<p>Diretamente no Python</p>
+<p>Como funciona diretamente no Python</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a></a><span class="im">from</span> gliner2 <span class="im">import</span> GLiNER2 </span>
 <span id="cb122-2"><a></a>model <span class="op">=</span> <span class="st">"fastino/gliner2-large-v1"</span></span>
@@ -1525,7 +1524,7 @@ memory usage: 48.8+ MB</code></pre>
 </section>
 <section id="chamando-funções-métodos-python-como-funções-r" class="slide level2">
 <h2>Chamando funções métodos Python como funções R</h2>
-<p>Opção 2: quase “nativo” Transformando função python em função R</p>
+<p>Opção 2: quase “nativo” Transformando função Python em função R</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a></a><span class="fu">library</span>(reticulate)</span>
 <span id="cb123-2"><a></a>reticulate<span class="sc">::</span><span class="fu">use_virtualenv</span>(<span class="st">"uv_nlp_314"</span>)</span>
@@ -1556,34 +1555,37 @@ memory usage: 48.8+ MB</code></pre>
 <span id="cb124-14"><a></a><span class="do">## [8] "transformers.integrations.peft.PeftAdapterMixin" </span></span>
 <span id="cb124-15"><a></a><span class="do">## [9] "python.builtin.object"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Salvei o modelo como objeto Python para não precisar do download novamente a cada nova vez que for utilizar.</p>
 </section>
-<section class="slide level2">
-
+<section id="importando-a-função-python-como-função-r" class="slide level2">
+<h2>Importando a função Python como função R</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a></a><span class="fu">assign</span>(<span class="st">"extract_entities"</span>, </span>
-<span id="cb125-2"><a></a>  extractor<span class="sc">$</span>extract_entities,</span>
-<span id="cb125-3"><a></a>  <span class="at">envir =</span> .GlobalEnv)</span>
-<span id="cb125-4"><a></a></span>
-<span id="cb125-5"><a></a><span class="fu">class</span>(extract_entities)</span>
-<span id="cb125-6"><a></a><span class="fu">args</span>(extract_entities)</span>
-<span id="cb125-7"><a></a></span>
-<span id="cb125-8"><a></a>extraia_entidades <span class="ot">&lt;-</span> extractor<span class="sc">$</span>extract_entities</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a></a><span class="co"># Opção 1: assign</span></span>
+<span id="cb125-2"><a></a><span class="fu">assign</span>(<span class="st">"extract_entities"</span>, </span>
+<span id="cb125-3"><a></a>  extractor<span class="sc">$</span>extract_entities,</span>
+<span id="cb125-4"><a></a>  <span class="at">envir =</span> .GlobalEnv)</span>
+<span id="cb125-5"><a></a></span>
+<span id="cb125-6"><a></a><span class="co"># opção 2</span></span>
+<span id="cb125-7"><a></a>extraia_entidades <span class="ot">&lt;-</span> extractor<span class="sc">$</span>extract_entities</span>
+<span id="cb125-8"><a></a></span>
 <span id="cb125-9"><a></a><span class="fu">class</span>(extraia_entidades)</span>
 <span id="cb125-10"><a></a><span class="do">## [1] "python.builtin.method" "python.builtin.object"</span></span>
-<span id="cb125-11"><a></a><span class="fu">args</span>(extraia_entidades)</span>
-<span id="cb125-12"><a></a><span class="do">## function (text, entity_types, threshold = 0.5, format_results = TRUE, </span></span>
-<span id="cb125-13"><a></a><span class="do">##     include_confidence = FALSE, include_spans = FALSE, max_len = NULL) </span></span>
-<span id="cb125-14"><a></a><span class="do">## NULL</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb125-11"><a></a></span>
+<span id="cb125-12"><a></a><span class="fu">args</span>(extraia_entidades)</span>
+<span id="cb125-13"><a></a><span class="do">## function (text, entity_types, threshold = 0.5, format_results = TRUE, </span></span>
+<span id="cb125-14"><a></a><span class="do">##     include_confidence = FALSE, include_spans = FALSE, max_len = NULL) </span></span>
+<span id="cb125-15"><a></a><span class="do">## NULL</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="rodando-como-função-r" class="slide level2">
+<h2>Rodando como função R</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a></a><span class="fu">extraia_entidades</span>(<span class="st">"O grupo R Brasil no Telegram agora transmite vídeos"</span>, <span class="fu">c</span>(<span class="st">"name"</span>))</span>
 <span id="cb126-2"><a></a><span class="do">## $entities</span></span>
 <span id="cb126-3"><a></a><span class="do">## $entities$name</span></span>
 <span id="cb126-4"><a></a><span class="do">## [1] "grupo R Brasil" "Telegram"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>O importante aqui: da função do Python <code>gliner2.GLiNER2.from_pretrained(fastino/gliner2-large-v1).extractor.extract_entities()</code> temos agora no R a função <code>extraia_entidades()</code>, podendo trabalhar agora inteiramente no R. De todo modo, ainda será necessário carregar o Python e o modelo para funcionar adequadamente, mas se dentro de um pacote, o usuário poderá utilizar as funcionalidades sem ver nada de Python.</p>
 </section>
 <section id="usar-função-r-no-python" class="slide level2">
 <h2>Usar função R no Python</h2>
